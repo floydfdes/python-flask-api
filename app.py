@@ -21,12 +21,14 @@ def predict_outcome():
     data = request.json
     data_array = np.array([data])
     outcome = model.predict(data_array)
+    predicTionResult=0
     print(outcome)
     if outcome == 1:
-        prediction = "You have heart disease"
+        prediction = "You have a heart disease"
+        predicTionResult=1
     else:
-        prediction = "You dont have heart disease"
-    dictionary = {'prediction': prediction}
+        prediction = "You dont a have heart disease"
+    dictionary = {'predictionMessage': prediction, 'prediction': predicTionResult}
     json_string = json.dumps(dictionary, indent=4)
     return json_string
 
